@@ -2,7 +2,7 @@ pipeline {
 
   environment {
     PROJECT = "ordinal-torch-377801"
-    APP_NAME = "frontendservice"
+    APP_NAME = "adservice"
     FE_SVC_NAME = "${APP_NAME}-frontend"
     CLUSTER = "cluster-1"
     CLUSTER_ZONE = "us-central1-c"
@@ -64,7 +64,7 @@ spec:
         container('kubectl') {
           
           sh "gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ordinal-torch-377801"
-          sh "kubectl apply -f frontend.yaml"
+          sh "kubectl apply -f adservice.yaml"
         }
       }
     }
