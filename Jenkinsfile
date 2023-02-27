@@ -52,6 +52,13 @@ spec:
         }
       }
     }
+    stage ('Test/Sonar') {
+      steps{
+        sh'mvn org.jacoco:jacoco-maven-plugin:prepare-agent test'
+        sonarScan('Sonar')
+      }
+    }
+
     stage('Build and push image with Container Builder') {
       steps {
         container('gcloud') {
