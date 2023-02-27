@@ -1,0 +1,39 @@
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jacoco.version>0.5.9.201207300726</jacoco.version>
+</properties>
+
+<profiles>
+    <profile>
+        <id>jacoco4</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                            <configuration
+                            <destfile>${project.build.directory}/target/jacoco.exec</destfile>
+                            <datafile>${project.build.directory}/target/jacoco.exec</datafile>
+                                <output>file</output>
+                                <append>true</append>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+</profiles>
